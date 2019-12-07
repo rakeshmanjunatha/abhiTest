@@ -1,0 +1,23 @@
+body {
+    background-color: #f8f8f8;
+}
+
+.container-custom {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.title{
+    font-size: 50px;
+    color: black;
+}
+
+.content{
+    position: absolute;
+    left: 5%;
+    top: 10%;
+}

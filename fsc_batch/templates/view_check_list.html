@@ -1,0 +1,145 @@
+{% load static %}
+{% load i18n crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BSC Batch Turn Over</title>
+    <!-- Bootstrap -->
+      <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <!-- JS Libs -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+  </head>
+
+  <body>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" id="home" href="/" role="tab" >Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="tab_checklist-entry" href="/checklist" role="tab">Check List Entry</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" id="tab_view-checklist" href="/view_checklist" role="tab">View Check List</a>
+    </li>
+  </ul>
+    <div class="container content">
+        <div class="tab-pane fade show" id="div_view_checklist" role="tabpanel" aria-labelledby="tab_view-checklist">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container px-lg-5">
+
+                        <div class="accordion" id="accordionFSCObject">
+                            <h4>FSC Batch Turnover Checklist</h4>
+                            {% for obj in fsc_objects %}
+                            <div class="card">
+
+                                <div class="card-header" id="heading_{{obj.id}}">
+                                  <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#div_data_{{obj.id}}"  aria-expanded="true" aria-controls="div_data_{{obj.id}}" >
+                                      CheckList #{{obj.id}}
+                                    </button>
+                                      <input type="button" value="Send Mail" class="btn btn-primary btn-sm pull-right" data-value="{{obj.id}}"/>
+                                  </h5>
+                                </div>
+
+                                <div id="div_data_{{obj.id}}"  class="collapse" aria-labelledby="heading_{{obj.id}}" data-parent="#accordionFSCObject">
+                                  <div class="card-body">
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Shift</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.shift}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Current Odate</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.current_Odate}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Verify Abends match alerts in WLA</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.verify_abends}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Verify jMagic No-abend alerts have been addressed</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.verify_no_abend}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Verify all Abends in WLA have valid notes</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.wla_valid_notes}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Batch One Time tickets are current to end of shift</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.bot_tickets}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Verify that all Abends in jMagic have valid updates in the associated incident</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.all_abends_incident}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Verify any cyclic jobs in UCC7.OVERRIDE</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.ucc_override}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Service Request have been handled</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.service_req}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Group emails have been addressed</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.group_emails}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Held jobs reviewed</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.held_jobs}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">FSC Production Report reviewed</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.fsc_report_reviewed}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Notable Incidents</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.notable_inc}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">QR Changes</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.qr_changes}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">BIM's to watch closely</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.bim}}</div>
+                                    </div>
+                                    <div class="row mx-lg-n5">
+                                        <div class="col py-3 px-lg-5 border bg-light">Other shift notes and special instructions</div>
+                                        <div class="col py-3 px-lg-5 border bg-light">{{obj.other_shift_notes}}</div>
+                                    </div>
+                                    <br><br>
+                                  </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+                        </div>
+
+                        {% for obj in fsc_objects %}
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </body>
+</html>
