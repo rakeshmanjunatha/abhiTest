@@ -23,4 +23,5 @@ urlpatterns = [
     path('checklist/', check_list, name="check_list"),
     path('view_checklist/', view_checklist, name="view_checklist"),
     path('create_fsc_batch/', create_fsc_batch, name="create_fsc_batch"),
+    path('send_fsc_mail/', send_fsc_mail, name="send_fsc_mail"),
 ]

@@ -1,0 +1,109 @@
+<html>
+<head>
+    <style>
+        table, td, th {
+          border: 1px solid #ddd;
+          text-align: left;
+        }
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        th, td {
+          padding: 15px;
+        }
+
+        tr:nth-child(even) {background-color: #f2f2f2;}
+    </style>
+</head>
+
+<body>
+Hello,
+<br><br>
+Pease find FSC Batch Turnover for Date - {{current_Odate}}
+<br><br>
+<table>
+    <tbody>
+        <tr>
+            <td>Shift</td>
+            <td>{{shift}}</td>
+        </tr>
+        <tr>
+            <td>Verify Abends match alerts in WLA</td>
+            <td>{{verify_abends}}</td>
+        </tr>
+
+        <tr>
+            <td>Verify jMagic No-abend alerts have been addressed</td>
+            <td>{{verify_no_abend}}</td>
+        </tr>
+
+        <tr>
+            <td>Verify all Abends in WLA have valid notes</td>
+            <td>{{wla_valid_notes}}</td>
+        </tr>
+
+        <tr>
+            <td>Batch One Time tickets are current to end of shift</td>
+            <td>{{bot_tickets}}</td>
+        </tr>
+
+        <tr>
+            <td>Verify that all Abends in jMagic have valid updates in the associated incident</td>
+            <td>{{all_abends_incident}}</td>
+        </tr>
+
+        <tr>
+            <td>Verify any cyclic jobs in UCC7.OVERRIDE</td>
+            <td>{{ucc_override}}</td>
+        </tr>
+
+        <tr>
+            <td>Service Request have been handled</td>
+            <td>{{service_req}}</td>
+        </tr>
+
+        <tr>
+            <td>Group emails have been addressed</td>
+            <td>{{group_emails}}</td>
+        </tr>
+        <tr>
+            <td>Held jobs reviewed</td>
+            <td>{{held_jobs}}</td>
+        </tr>
+        <tr>
+            <td>FSC Production Report reviewed</td>
+            <td>{{fsc_report_reviewed}}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<h4>Additional Details: </h4>
+<hr>
+<p>
+    <h5>Notable Incidents:</h5>
+    {{notable_inc}}
+</p>
+<p>
+    <h5>QR Changes:</h5>
+    {{qr_changes}}
+</p>
+<p>
+    <h5>BIM's to watch closely:</h5>
+    {{bim}}
+</p>
+<p>
+    <h5>Other shift notes and special instructions:</h5>
+    {{other_shift_notes}}
+</p>
+
+<br><br><br>
+<h4>Thanks,</h4>
+<h4>Batch Services</h4>
+<h4>FSC</h4>
+
+</body>
+<header></header>
+</html>

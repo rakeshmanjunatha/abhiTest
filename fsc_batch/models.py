@@ -9,7 +9,7 @@ class FSCBatchTurnOver(models.Model):
 
     shift = models.CharField(max_length=30, choices=SHIFT_TYPES,
                              verbose_name=('Shift'), blank=False, null=False)
-    current_Odate = models.DateTimeField("Current ODate", blank=False, null=False)
+    current_Odate = models.DateField("Current ODate", blank=False, null=False)
 
     verify_abends = models.BooleanField(default=False)
     verify_no_abend = models.BooleanField(default=False)

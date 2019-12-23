@@ -18,6 +18,42 @@ body {
 
 .content{
     position: absolute;
-    left: 5%;
-    top: 10%;
+    left: 3%;
+}
+
+.custom_tab{
+    color: #fff;
+    background: rgb(32,28,101);
+    background: -moz-radial-gradient(circle, rgba(32,28,101,0.8743872549019608) 8%, rgba(68,61,189,0.9528186274509804) 15%, rgba(69,62,191,0.7819502801120448) 31%, rgba(0,0,0,0.896796218487395) 59%, rgba(66,59,182,1) 76%, rgba(4,4,12,1) 99%);
+    background: -webkit-radial-gradient(circle, rgba(32,28,101,0.8743872549019608) 8%, rgba(68,61,189,0.9528186274509804) 15%, rgba(69,62,191,0.7819502801120448) 31%, rgba(0,0,0,0.896796218487395) 59%, rgba(66,59,182,1) 76%, rgba(4,4,12,1) 99%);
+    background: radial-gradient(circle, rgba(32,28,101,0.8743872549019608) 8%, rgba(68,61,189,0.9528186274509804) 15%, rgba(69,62,191,0.7819502801120448) 31%, rgba(0,0,0,0.896796218487395) 59%, rgba(66,59,182,1) 76%, rgba(4,4,12,1) 99%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#201c65",endColorstr="#04040c",GradientType=1);
+}
+
+.custom_title{
+    font-size: 2em;
+    margin-top: 10px;
+    position: fixed;
+}
+
+.caption{
+    margin-top: 42px;
+    position: fixed;
+}
+
+.base_ancher > a{
+    color: white;
+    margin-right: 30px;
+}
+
+.base_ancher > a:hover{
+    color: white;
+}
+
+.btn-link:active {
+    border-color: transparent;
+}
+
+.btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
+    border-color: transparent;
 }

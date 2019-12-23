@@ -2,16 +2,6 @@ var action = 'save'
 $(document).ready(function(){
     $('input[type="radio"]').attr('required', 'required')
 
-//    $('.nav-link').click(function(){
-//        var tab = $(this).attr('href')
-//        if(tab == '#div_checklist_entry'){
-//            $('#div_view_checklist').removeClass('show')
-//        }else{
-//            $('#div_checklist_entry').removeClass('show')
-//        }
-//        $(tab).addClass(' show')
-//    })
-
     $('#btn_save_data').click(function(){
         action = 'save'
         $('#form-entry_checklist').submit()
@@ -45,7 +35,7 @@ $(document).ready(function(){
         jsonObj['bim'] = $("#id_bim").val()
         jsonObj['other_shift_notes'] = $("#id_other_shift_notes").val()
         jsonObj['action'] = action
-
+        console.log(jsonObj)
         $.ajax({
             url : "/create_fsc_batch/",
             type : "POST",
@@ -60,4 +50,20 @@ $(document).ready(function(){
             }
         });
     }
+
+    $('.btn_send_mail_fromDB').click(function(){
+        var batch_id = $(this).data('value')
+
+        $.ajax({
+            url : "/send_fsc_mail/",
+            type : "POST",
+            data : {'batch_id': batch_id},
+            success : function(response) {
+                alert('Mail Sent successfully.')
+            },
+            error : function(xhr,errmsg,err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+            }
+        });
+    })
 });
